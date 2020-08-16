@@ -40,7 +40,7 @@ def worker():
           if 'Googlebot' in decodedString:
               row_temp = re.sub(r'(?<!\\)\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})', r'', decodedString)
               row = json.loads(row_temp)
-              error = BQ.insert_rows_json(table,
+              errors = BQ.insert_rows_json(table,
                                    json_rows=[row],
                                    row_ids=[blob.name])
       if errors != []:
