@@ -75,8 +75,8 @@ def _insert_into_bigquery(bucket_name, file_name):
         blob_str = str(row,'ISO-8859-1')
         blob_split = blob_str.split(']: ')
         pt_1 = blob_split[0]
-        pt_2 = blob_split[1]
-        if 'Googlebot' in pt_2:
+        decodedString = blob_split[1]
+        if 'Googlebot' in decodedString:
             row_temp = re.sub(r'(?<!\\)\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})', r'', decodedString)
             row = json.loads(row_temp)
             errors = BQ.insert_rows_json(table,
