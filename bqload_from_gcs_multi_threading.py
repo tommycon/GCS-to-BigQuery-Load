@@ -42,14 +42,14 @@ def worker():
               row = json.loads(row_temp)
               errors = BQ.insert_rows_json(table,
                                    json_rows=[row],
-                                   row_ids=[blob.name])
+                                   row_ids=None)
       if errors != []:
         print(blob.name + " processing error")
-      else:
-        print(blob.name + " processing complete")
-        source_blob = source_bucket.blob(blob.name)
-        source_bucket.copy_blob(blob, destination_bucket, blob.name)
-        source_blob.delete()
+
+      print(blob.name + " processing complete")
+      source_blob = source_bucket.blob(blob.name)
+      source_bucket.copy_blob(blob, destination_bucket, blob.name)
+      source_blob.delete()
 
 
 list_len =len(list(source_bucket.list_blobs(prefix='20')))
