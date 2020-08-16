@@ -32,7 +32,6 @@ def worker():
       print(blob.name)
       blob1= blob.download_as_string()
       blob2= blob1.splitlines()
-      json_arr = []
       for row in blob2:
           blob_str = str(row,'ISO-8859-1')
           blob_split = blob_str.split(']: ')
