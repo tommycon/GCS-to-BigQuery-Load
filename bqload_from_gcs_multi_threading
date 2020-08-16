@@ -58,8 +58,4 @@ task_queue.join()
 
 time.sleep(60) 
 
-
-# TODO: Add check that list contains 2 x num_clients x num_employees
-
-
 print('Script Done')
