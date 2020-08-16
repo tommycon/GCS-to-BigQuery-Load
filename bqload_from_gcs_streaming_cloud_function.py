@@ -81,7 +81,7 @@ def _insert_into_bigquery(bucket_name, file_name):
             row = json.loads(row_temp)
             errors = BQ.insert_rows_json(table,
                                  json_rows=[row],
-                                 row_ids=[file_name],
+                                 row_ids=None,
                                  retry=retry.Retry(deadline=30))
         
     if errors != []:
