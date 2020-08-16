@@ -45,10 +45,11 @@ def worker():
                                    row_ids=[blob.name])
       if errors != []:
         print(blob.name + " processing error")
-      print(blob.name + " processing complete")
-      source_blob = source_bucket.blob(blob.name)
-      source_bucket.copy_blob(blob, destination_bucket, blob.name)
-      source_blob.delete()
+      else:
+        print(blob.name + " processing complete")
+        source_blob = source_bucket.blob(blob.name)
+        source_bucket.copy_blob(blob, destination_bucket, blob.name)
+        source_blob.delete()
 
 
 list_len =len(list(source_bucket.list_blobs(prefix='20')))
